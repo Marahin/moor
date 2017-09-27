@@ -3,11 +3,12 @@ image: golang:latest
 before_script:
     - ln -s /builds /go/src/git.3lab.re
     - cd /go/src/git.3lab.re/marahin/moor
-
+    - $(go get -u -d github.com/goji/goji); true
+    - go get -u github.com/rs/cors
 stages:
     - build
 
 compile:
     stage: build
     script:
-        - make build
+        - make compile
