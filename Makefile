@@ -1,9 +1,12 @@
 BINARY=moor.bin
 MOOR_DOCKER_NAME ?=moor
+MOOR_DOCKER_IMAGE=moor-image
+OWNER=marahin
 
 all: clean build docker-build
 
-.PHONY: docker-build docker-run docker-clean build install-dependencies compile clean remove-binary install
+.PHONY: docker-build docker-run docker-clean docker-update docker-tag docker-push
+.PHONY: build install-dependencies compile clean remove-binary install
 
 install: all docker-run
 
@@ -13,7 +16,7 @@ docker-build:
 
 docker-run:
 		@printf "[$@] Starting the container...\n"
-		docker run -d -p 7999:7999 --name ${MOOR_DOCKER_NAME} -i moor-image
+		docker run -d -p 7999:7999 --name ${MOOR_DOCKER_NAME} -i ${MOOR_DOCKER_IMAGE}
 
 docker-clean:
 		@printf "[$@] Checking if container is still saved...\n"
@@ -22,6 +25,16 @@ docker-clean:
 			docker container rm ${MOOR_DOCKER_NAME} ; \
 		fi
 		@printf "[$@] Container removed.\n"
+
+docker-update: docker-clean docker-build docker-tag docker-push
+
+docker-tag:
+		@printf "[$@] Tagging ${MOOR_DOCKER_IMAGE} as ${OWNER}/${MOOR_DOCKER_IMAGE}..."
+		docker tag ${MOOR_DOCKER_IMAGE} ${OWNER}/${MOOR_DOCKER_IMAGE}
+
+docker-push:
+		@printf "[$@] Pushing to docker hub...\n"
+		docker push ${OWNER}/${MOOR_DOCKER_IMAGE}:latest
 
 docker-stop:
 		@printf "[$@] Checking if container is running...\n"
