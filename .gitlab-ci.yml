@@ -1,0 +1,13 @@
+image: golang:latest
+
+before_script:
+    - ln -s /builds /go/src/git.3lab.re
+    - cd /go/src/git.3lab.re/marahin/moor
+
+stages:
+    - build
+
+compile:
+    stage: build
+    script:
+        - make build
