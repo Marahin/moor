@@ -60,5 +60,5 @@ remove-binary:
 		@printf "[$@] Checking if the binary is still here...\n" \
 		@if [ -f ${BINARY} ] ; then \
 			echo "[$@] It is. Removing it... "; \
-			rm ${BINARY}; \
+			rm -f ${BINARY}; \
 		fi \
