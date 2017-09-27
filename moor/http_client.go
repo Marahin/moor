@@ -8,6 +8,13 @@ import (
 	"os"
 )
 
+func sanitizeUrl(url string) (string) {
+	if url[0:4] != "http" {
+		url = "http://" + url
+	}
+	return url
+}
+
 func BlockerCharactersAmount() (int) {
 	var err error
 	var amount int
@@ -28,6 +35,7 @@ func BlockerCharactersAmount() (int) {
 }
 
 func Get(url string) (text string) {
+	url = sanitizeUrl(url)
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println("[moor] Error during GET\n")
