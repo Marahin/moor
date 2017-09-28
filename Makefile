@@ -2,7 +2,6 @@ BINARY=moor.bin
 MOOR_DOCKER_NAME ?=moor
 MOOR_DOCKER_IMAGE=moor-image
 OWNER=marahin
-DEPENDENCIES=github.com/goji/goji github.com/rs/cors
 
 all: clean build docker-build
 
