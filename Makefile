@@ -6,7 +6,7 @@ OWNER=marahin
 all: clean build docker-build
 
 .PHONY: docker-build docker-run docker-clean docker-update docker-tag docker-push
-.PHONY: build compile clean remove-binary install
+.PHONY: build compile clean remove-binary install install-dependencies install-glide-if-not-installed
 
 install: all docker-run
 
@@ -43,7 +43,14 @@ docker-stop:
 			docker stop ${MOOR_DOCKER_NAME}; \
 		fi
 
-build: remove-binary install-dependencies compile
+build: remove-binary install-glide-if-not-installed install-dependencies compile
+
+install-glide-if-not-installed:
+		@printf "[$@] Checking if Glide is installed...\n"
+		@if (! which glide); then \
+			echo "[$@] It is not, installing..."; \
+			curl https://glide.sh/get | sh; \
+		fi
 
 install-dependencies:
 		@printf "[$@] Installing dependencies (may take a while)..."
