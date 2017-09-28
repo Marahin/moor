@@ -1,4 +1,7 @@
 # Moor
+  
+[![pipeline status](https://git.3lab.re/marahin/moor/badges/master/pipeline.svg)](https://git.3lab.re/marahin/moor/commits/master)  
+
 **M**edium D**oor** - **moor** is a WWW proxy that fetches data from given URL (bypassing CORS and `while(1)` anti-JSON-hijack trap). 
 
 **It was primarily created for fetching data from Medium-based blogs**, where you do not have any kind of API, and instead you must retrieve data like Mediums' frontend does: from `%PATH%/?format=json`. There were two caveats though:  
