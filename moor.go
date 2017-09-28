@@ -1,6 +1,6 @@
 package main
 
-import "moor/moor"
+import "git.3lab.re/marahin/moor/moor"
 
 
 func main() {

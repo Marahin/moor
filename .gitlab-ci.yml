@@ -1,0 +1,15 @@
+image: golang:latest
+
+before_script:
+    - ln -s /builds /go/src/git.3lab.re
+    - cd /go/src/git.3lab.re/marahin/moor
+    - env
+    - curl https://glide.sh/get | sh
+    - apt update && apt install tree && tree .
+stages:
+    - build
+
+compile:
+    stage: build
+    script:
+        - make build
