@@ -13,7 +13,7 @@ install: all docker-run
 
 docker-build:
 		@printf "[$@] Building the container from Dockerfile. This may take a while...\n"
-		docker build -t moor-image -f Dockerfile .
+		docker build -t ${MOOR_DOCKER_IMAGE} -f Dockerfile .
 
 docker-run:
 		@printf "[$@] Starting the container...\n"
