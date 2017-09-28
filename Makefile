@@ -7,7 +7,7 @@ DEPENDENCIES=github.com/goji/goji github.com/rs/cors
 all: clean build docker-build
 
 .PHONY: docker-build docker-run docker-clean docker-update docker-tag docker-push
-.PHONY: build install-dependencies compile clean remove-binary install
+.PHONY: build compile clean remove-binary install
 
 install: all docker-run
 
@@ -47,8 +47,8 @@ docker-stop:
 build: remove-binary install-dependencies compile
 
 install-dependencies:
-		@printf "[$@] Resolving dependencies (this may take a while)...\n"
-		go get -u ${DEPENDENCIES}
+		@printf "[$@] Installing dependencies (may take a while)..."
+		glide install
 
 compile:
 		@printf "[$@] Starting compilation (this also may take a while)...\n"
