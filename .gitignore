@@ -5,4 +5,4 @@
 *.bin
 
 # We dont want to push vendor
-vendor//
+vendor/

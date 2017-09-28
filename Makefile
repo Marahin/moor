@@ -2,18 +2,18 @@ BINARY=moor.bin
 MOOR_DOCKER_NAME ?=moor
 MOOR_DOCKER_IMAGE=moor-image
 OWNER=marahin
-DEPENDENCIES=github.com/goji/goji github.com/rs/cors
+GLIDE_PATH ?=.glide/glide
 
 all: clean build docker-build
 
 .PHONY: docker-build docker-run docker-clean docker-update docker-tag docker-push
-.PHONY: build compile clean remove-binary install
+.PHONY: build compile clean remove-binary install install-dependencies
 
 install: all docker-run
 
 docker-build:
 		@printf "[$@] Building the container from Dockerfile. This may take a while...\n"
-		docker build -t moor-image -f Dockerfile .
+		docker build -t ${MOOR_DOCKER_IMAGE} -f Dockerfile .
 
 docker-run:
 		@printf "[$@] Starting the container...\n"
@@ -48,7 +48,7 @@ build: remove-binary install-dependencies compile
 
 install-dependencies:
 		@printf "[$@] Installing dependencies (may take a while)..."
-		glide install
+		$(GLIDE_PATH) install
 
 compile:
 		@printf "[$@] Starting compilation (this also may take a while)...\n"
