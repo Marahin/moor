@@ -23,7 +23,7 @@ func allowedOrigins() ([]string){
 func handle(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	paramUrl := pat.Param(r, "url")
-	fmt.Printf("GET → %s\n", paramUrl)
+	fmt.Printf("GET → %s [origin: %s]\n", paramUrl, r.Header.Get("Origin"))
 	if stringInSlice(paramUrl, IGNORE_ENDPOINTS) {
 		fmt.Printf("  url ignored (%s)\n", paramUrl)
 		return
