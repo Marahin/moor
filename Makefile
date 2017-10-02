@@ -44,11 +44,7 @@ docker-stop:
 			docker stop ${MOOR_DOCKER_NAME}; \
 		fi
 
-build: remove-binary install-dependencies compile
-
-install-dependencies:
-		@printf "[$@] Installing dependencies (may take a while)..."
-		$(GLIDE_PATH) install
+build: remove-binary compile
 
 compile:
 		@printf "[$@] Starting compilation (this also may take a while)...\n"

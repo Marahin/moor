@@ -3,6 +3,3 @@
 
 # Binary file(s)
 *.bin
-
-# We dont want to push vendor
-vendor/
