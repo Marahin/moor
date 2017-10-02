@@ -55,6 +55,28 @@ This section covers only **moor** installation. **It is highly advised to put mo
 * `make install`
 * make sure that you can see `moor` in `docker ps |grep moor` 
 
+## Configuration
+
+### CORS
+
+In order to prevent malicious requests from third parties there is CORS support implemented. **By default all requests are allowed (`*`)**!
+
+In order to set CORS domains use `MOOR_ALLOWED_ORIGINS` environment variable, with each origin separated with '`,`', for instance: `export MOOR_ALLOWED_ORIGINS=marahin.pl,marahin.dev`.
+
+### Ignored endpoints
+
+You can set ignored endpoints (ones that will NOT be fetched) in [generic_definitions.go](moor/generic_definitions.go#L13).
+  
+### Blocked characters amount
+
+Blocked characters amount is the amount of characters that prefix the JSON output. It's default value can be seen in [moor/generic_definitions.go](moor/generic_definitions.go#L8) but you can also overwrite it using `MOOR_BLOCKER_CHARACTERS_AMOUNT` environment variable (as seen in [moor/http_client.go](moor/http_client.go#L18)).
+
+## Usage
+
+```
+GET address_to_your_moor_instance[:7999]/URL_ENCODE(URL_TO_FETCH)
+```
+
 ## Contributing
 
 If you wish to contribute send a PR either on [GitLab (primary source tree)](http://git.3lab.re/marahin/moor)  or [on GitHub](http://github.com/marahin/moor).  
