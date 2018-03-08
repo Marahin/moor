@@ -1,7 +1,6 @@
 package main
 
-import "git.3lab.re/marahin/moor/moor"
-
+import "github.com/marahin/moor/moor"
 
 func main() {
 	moor.Credits()

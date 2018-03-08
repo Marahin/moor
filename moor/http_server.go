@@ -42,9 +42,9 @@ func handle(w http.ResponseWriter, r *http.Request) {
 }
 
 func webAddr() (string) {
-	var addr = os.Getenv("MOOR_WEBSERVICE_ADDR")
-	if addr == "" {
-		addr = "0.0.0.0:7999"
+	var port = os.Getenv("PORT")
+	if port == "" {
+		port = "7999"
 	}
-	return addr
+	return ":" + port
 }
