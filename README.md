@@ -1,3 +1,8 @@
+# DEPRECATED
+
+This project is deprecated. Current, maintained and serverless ([https://zeit.co](zeit.co)-based instance) can be found here: [https://github.com/Marahin/moor2](https://github.com/Marahin/moor2)
+
+
 # Moor
   
 [![pipeline status](https://git.3lab.re/marahin/moor/badges/master/pipeline.svg)](https://git.3lab.re/marahin/moor/commits/master)  
